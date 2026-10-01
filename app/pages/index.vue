@@ -1,6 +1,26 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+definePageMeta({
+  layout: 'default',
+})
+
+const file = ref<File | null>(null)
+const imageUrl = ref<string | null>(null)
+const blurAmount = ref(0)
+
+const handleImageSelected = (selectedFile: File) => {
+  file.value = selectedFile
+  imageUrl.value = URL.createObjectURL(selectedFile)
+}
+</script>
 
 <template>
-  <h1 class="text-3xl font-medium text-blue-500">Hello World!</h1>
-  <font-awesome-icon :icon="['fas', 'home']" />
+  <div class="flex flex-col gap-4">
+    <image-preview :image-url="imageUrl" :blur-amount="blurAmount" />
+
+    <blur-control v-if="file" v-model="blurAmount" />
+
+    <file-info v-if="file" :file="file" />
+
+    <image-picker @selected="handleImageSelected" />
+  </div>
 </template>
