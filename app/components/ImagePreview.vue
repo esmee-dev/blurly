@@ -17,7 +17,7 @@ const blurPixels = computed(() => {
       v-if="imageUrl"
       :src="imageUrl"
       alt="Selected image"
-      class="h-full w-full object-cover"
+      class="h-full w-full object-contain"
       :style="{ filter: `blur(${blurPixels}px)` }"
     />
 
