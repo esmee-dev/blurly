@@ -1,6 +1,7 @@
 <script setup lang="ts">
 const props = defineProps<{
   modelValue: number
+  disabled: boolean
 }>()
 
 const emit = defineEmits<{
@@ -30,6 +31,7 @@ const blurAmount = computed({
       min="0"
       max="100"
       step="1"
+      :disabled="disabled"
       class="w-full accent-emerald-600"
     />
   </div>
