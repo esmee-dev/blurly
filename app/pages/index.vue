@@ -66,5 +66,7 @@ const isInfoOpen = ref(false)
       :loading="loading"
       :answer="answer"
     />
+
+    <info-modal :open="isInfoOpen" @close="isInfoOpen = false" />
   </div>
 </template>
