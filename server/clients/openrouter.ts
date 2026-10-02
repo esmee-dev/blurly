@@ -11,6 +11,13 @@ type AskOpenRouterOptions = {
   image: string
 }
 
+/**
+ * Sends a prompt and image to OpenRouter and returns the AI response
+ *
+ * @param prompt
+ * @param image
+ *
+ */
 export const askOpenRouter = async ({
   prompt,
   image,

@@ -1,3 +1,20 @@
+/**
+ * Converts a blur percentage to the corresponding CSS blur value in pixels
+ *
+ * @param percentage
+ *
+ */
+export const blurPercentageToPixels = (percentage: number) => {
+  return (percentage / 100) * 20
+}
+
+/**
+ * Creates a blurred PNG image from the selected file using a canvas
+ *
+ * @param file
+ * @param blurPercentage
+ *
+ */
 export const createBlurredImage = async (
   file: File,
   blurPercentage: number,
@@ -18,16 +35,13 @@ export const createBlurredImage = async (
 
   if (!context) {
     URL.revokeObjectURL(imageUrl)
-  }
-
-  if (!context) {
     throw new Error('Could not create canvas context')
   }
 
   canvas.width = image.width
   canvas.height = image.height
 
-  const blurPixels = (blurPercentage / 100) * 20
+  const blurPixels = blurPercentageToPixels(blurPercentage)
 
   context.filter = `blur(${blurPixels}px)`
 

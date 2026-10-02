@@ -7,6 +7,9 @@ const emit = defineEmits<{
   'update:modelValue': [value: number]
 }>()
 
+/**
+ * Keeps the blur amount in sync with the parent component
+ */
 const blurAmount = computed({
   get: () => props.modelValue,
   set: (value) => emit('update:modelValue', value),

@@ -4,6 +4,9 @@ const props = defineProps<{
   blurAmount: number
 }>()
 
+/**
+ * Converts the blur percentage into the pixel value used by CSS
+ */
 const blurPixels = computed(() => {
   return (props.blurAmount / 100) * 20
 })

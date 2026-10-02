@@ -11,6 +11,12 @@ const prompt = `
   - Respond in English.
 `
 
+/**
+ * Asks the AI to identify the main subject of a blurred image
+ *
+ * @param image
+ *
+ */
 export const guessImage = async (image: string) => {
   return await askOpenRouter({
     prompt,

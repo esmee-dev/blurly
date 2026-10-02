@@ -11,6 +11,12 @@ const emit = defineEmits<{
   selected: [file: File]
 }>()
 
+/**
+ * Handles the selected image file and emits it to the parent component
+ *
+ * @param event
+ *
+ */
 const handleFileChange = (event: Event) => {
   const target = event.target as HTMLInputElement
 

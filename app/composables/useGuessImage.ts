@@ -11,6 +11,12 @@ export const useImageGuess = () => {
   const loading = ref(false)
   const error = ref('')
 
+  /**
+   * Stores the selected image and resets the previous guess state
+   *
+   * @param selectedFile
+   *
+   */
   const handleImageSelected = (selectedFile: File) => {
     file.value = selectedFile
     imageUrl.value = URL.createObjectURL(selectedFile)
@@ -20,6 +26,9 @@ export const useImageGuess = () => {
     blurAmount.value = 0
   }
 
+  /**
+   * Creates a blurred image and sends it to the guess API
+   */
   const guessImage = async () => {
     if (!file.value) {
       error.value = 'Please select an image.'
