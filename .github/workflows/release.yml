@@ -5,8 +5,8 @@ on:
     branches:
       - release
   pull_request:
-      branches:
-        - release
+    branches:
+      - release
 
 jobs:
   test:
@@ -23,7 +23,7 @@ jobs:
           cache: npm
 
       - name: Install dependencies
-        uses: npm ci
+        run: npm ci
 
       - name: Run tests
         run: npm test
