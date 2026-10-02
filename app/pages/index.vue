@@ -1,4 +1,8 @@
 <script setup lang="ts">
+useHead({
+  title: 'Blurly — AI Image Guesser',
+})
+
 definePageMeta({
   layout: 'default',
 })
@@ -37,7 +41,7 @@ const isInfoOpen = ref(false)
       </div>
 
       <div v-if="file" class="pt-2 border-t border-gray-200/60">
-        <blur-control v-model="blurAmount" />
+        <blur-control v-model="blurAmount" :disabled="loading" />
       </div>
 
       <button

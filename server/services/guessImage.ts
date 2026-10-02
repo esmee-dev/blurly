@@ -1,4 +1,4 @@
-import { askOpenRouter } from '#server/clients/openrouter.ts'
+import { askGemini } from '#server/clients/gemini.ts'
 
 const prompt = `
   Look at this (blurred) image.
@@ -18,7 +18,7 @@ const prompt = `
  *
  */
 export const guessImage = async (image: string) => {
-  return await askOpenRouter({
+  return await askGemini({
     prompt,
     image,
   })

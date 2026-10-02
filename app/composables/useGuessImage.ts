@@ -56,7 +56,8 @@ export const useImageGuess = () => {
     } catch (err) {
       console.error(err)
 
-      error.value = 'Something went wrong while guessing the image'
+      error.value =
+        'Something went wrong while guessing the image. Try again later.'
     } finally {
       loading.value = false
     }
