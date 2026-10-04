@@ -14,9 +14,5 @@ export default defineEventHandler(async (event) => {
     })
   }
 
-  const answer = await guessImage(body.image)
-
-  return {
-    answer,
-  }
+  return await guessImage(body.image)
 })

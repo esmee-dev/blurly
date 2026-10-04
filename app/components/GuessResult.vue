@@ -1,7 +1,8 @@
 <script setup lang="ts">
 defineProps<{
   answer: string
-  loading: boolean
+  confidence: number
+  reason: string
 }>()
 </script>
 
@@ -14,16 +15,14 @@ defineProps<{
     </div>
 
     <div class="rounded-2xl rounded-tl-none bg-gray-100 px-4 py-3">
-      <div v-if="loading" class="flex items-center gap-2">
-        <font-awesome-icon
-          :icon="['fas', 'spinner']"
-          class="animate-spin text-emerald-600"
-        />
-        <span class="text-sm text-gray-600">AI is thinking...</span>
-      </div>
-
-      <p v-else-if="answer" class="text-sm text-gray-800">
+      <p class="text-sm font-bold text-gray-900">
         {{ answer }}
+      </p>
+
+      <p class="mt-2 text-xs text-gray-700">AI confidence: {{ confidence }}</p>
+
+      <p class="mt-2 text-sm italic text-gray-700">
+        {{ reason }}
       </p>
     </div>
   </div>

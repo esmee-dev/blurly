@@ -1,5 +1,7 @@
 type GuessResponse = {
   answer: string
+  confidence: number
+  reason: string
 }
 
 export const useImageGuess = () => {
@@ -8,6 +10,8 @@ export const useImageGuess = () => {
   const blurAmount = ref(0)
 
   const answer = ref('')
+  const confidence = ref(0)
+  const reason = ref('')
   const loading = ref(false)
   const error = ref('')
 
@@ -22,6 +26,8 @@ export const useImageGuess = () => {
     imageUrl.value = URL.createObjectURL(selectedFile)
 
     answer.value = ''
+    confidence.value = 0
+    reason.value = ''
     error.value = ''
     blurAmount.value = 0
   }
@@ -53,6 +59,8 @@ export const useImageGuess = () => {
       })
 
       answer.value = response.answer
+      confidence.value = response.confidence
+      reason.value = response.reason
     } catch (err) {
       console.error(err)
 
@@ -68,6 +76,8 @@ export const useImageGuess = () => {
     imageUrl,
     blurAmount,
     answer,
+    confidence,
+    reason,
     loading,
     error,
     handleImageSelected,

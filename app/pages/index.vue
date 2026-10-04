@@ -12,6 +12,8 @@ const {
   imageUrl,
   blurAmount,
   answer,
+  confidence,
+  reason,
   loading,
   error,
   handleImageSelected,
@@ -66,9 +68,10 @@ const isInfoOpen = ref(false)
     </p>
 
     <guess-result
-      v-if="loading || answer"
-      :loading="loading"
+      v-if="answer"
       :answer="answer"
+      :confidence="confidence"
+      :reason="reason"
     />
 
     <info-modal :open="isInfoOpen" @close="isInfoOpen = false" />

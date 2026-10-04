@@ -5,10 +5,19 @@ type AskGeminiOptions = {
   image: string
 }
 
+type GeminiResponse = {
+  answer: string
+  confidence: number
+  reason: string
+}
+
 /**
  * Sends a prompt and image to Gemini and returns the AI response.
  */
-export const askGemini = async ({ prompt, image }: AskGeminiOptions) => {
+export const askGemini = async ({
+  prompt,
+  image,
+}: AskGeminiOptions): Promise<GeminiResponse> => {
   const config = useRuntimeConfig()
 
   const ai = new GoogleGenAI({
@@ -55,5 +64,17 @@ export const askGemini = async ({ prompt, image }: AskGeminiOptions) => {
     })
   }
 
-  return response.text
+  const cleanedResponse = response.text
+    .replace(/^```json\s*/, '')
+    .replace(/\s*```$/, '')
+    .trim()
+
+  try {
+    return JSON.parse(cleanedResponse) as GeminiResponse
+  } catch {
+    throw createError({
+      statusCode: 502,
+      statusMessage: 'Invalid response from AI provider',
+    })
+  }
 }
