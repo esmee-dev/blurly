@@ -5,7 +5,7 @@
  *
  */
 export const blurPercentageToPixels = (percentage: number) => {
-  return (percentage / 100) * 20
+  return percentage
 }
 
 /**

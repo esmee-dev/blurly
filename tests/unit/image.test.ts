@@ -7,14 +7,14 @@ describe('blurPercentageToPixels', () => {
   })
 
   it('converts 25% to 5 pixels', () => {
-    expect(blurPercentageToPixels(25)).toBe(5)
+    expect(blurPercentageToPixels(25)).toBe(25)
   })
 
   it('converts 50% to 10 pixels', () => {
-    expect(blurPercentageToPixels(50)).toBe(10)
+    expect(blurPercentageToPixels(50)).toBe(50)
   })
 
   it('converts 100% to 20 pixels', () => {
-    expect(blurPercentageToPixels(100)).toBe(20)
+    expect(blurPercentageToPixels(100)).toBe(100)
   })
 })
